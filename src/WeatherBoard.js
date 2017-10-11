@@ -7,7 +7,9 @@ class WeatherBoard extends Component {
     this.state = {
       weather: "",
       city: 'Boston',
-      newCity: ''
+      newCity: '',
+      date: '',
+      newDate: ''
     }
   }
   cityChange (e) {
@@ -21,6 +23,19 @@ class WeatherBoard extends Component {
       e.preventDefault()
       this.setState({
         city: this.state.newCity,
+      })
+    }
+    dateChange (e) {
+      this.setState({
+        newDate: e.target.value
+      })
+      console.log(this.state.newDate)
+      console.log(this.state.date)
+    }
+    addDate (e) {
+      e.preventDefault()
+      this.setState({
+        date: this.state.newDate,
       })
     }
     // let cityLocation = ''
@@ -56,8 +71,17 @@ class WeatherBoard extends Component {
           </label>
           <input onClick={(e) => this.addCity(e)} type="submit" value="Submit" />
         </form>
-        <div >Location</div>
-        <div className="date">Date</div>
+        <form>
+          <label className="date">
+            Date:
+            <input
+            type="date"
+            onChange={(e) => this.dateChange(e)}
+            value={this.state.newDate}
+            />
+          </label>
+          <input onClick={(e) => this.addDate(e)} type="submit" value="Submit" />
+        </form>
         <div className="time">Time</div>
         <h1>Weather in Boston: {this.state.weather} Degrees</h1>
         <div className="clothes">Clothes</div>
