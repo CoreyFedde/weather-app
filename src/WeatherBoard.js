@@ -46,15 +46,17 @@ class WeatherBoard extends Component {
   var base = this
 
   // fetch weather
-  let weatherApi = 'http://api.openweathermap.org/data/2.5/weather?q=boston&units=imperial&appid=052f26926ae9784c2d677ca7bc5dec98';
+  // let weatherApi = 'http://api.openweathermap.org/data/2.5/weather?q=boston&units=imperial&appid=052f26926ae9784c2d677ca7bc5dec98';
+  let weatherApi = 'http://api.openweathermap.org/data/2.5/forecast?q=London,us&units=imperial&appid=052f26926ae9784c2d677ca7bc5dec98'
   fetch(weatherApi)
     .then((response) => {
       return response.json()
-    }).then((json) => {
-        base.setState({ weather: json.main.temp });
-    }).catch((ex) => {
-      console.log('An error occured while parsing!', ex)
-    })
+    }).then((response) => console.log(response))
+    // }).then((json) => {
+    //     base.setState({ weather: json.main.temp });
+    // }).catch((ex) => {
+    //   console.log('An error occured while parsing!', ex)
+    // })
 }
   render() {
     return (
@@ -75,7 +77,7 @@ class WeatherBoard extends Component {
           <label className="date">
             Date:
             <input
-            type="date"
+            type="datetime-local"
             onChange={(e) => this.dateChange(e)}
             value={this.state.newDate}
             />
