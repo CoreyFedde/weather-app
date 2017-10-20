@@ -10,7 +10,9 @@ class WeatherBoard extends Component {
       city: '',
       newCity: '',
       date: '',
-      newDate: ''
+      newDate: '',
+      lat: '',
+      lon: ''
     }
   }
   cityChange (e) {
@@ -61,6 +63,10 @@ class WeatherBoard extends Component {
     const showCity = function(position){
       var x = position.coords.latitude;
       var y = position.coords.longitude;
+      base.setState({
+        lat: x,
+        lon: y
+      })
       console.log(x, y)
       var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+x+','+y+'&sensor=true';
       fetch(url)
@@ -162,7 +168,7 @@ class WeatherBoard extends Component {
       // </form>
       <div>
         <h1>Location: {this.state.city}</h1>
-        <Temp city={this.state.city}/>
+        <Temp lat={this.state.lat} lon={this.state.lon}/>
       </div>
     );
   }
