@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Outfit from './Outfit.js'
 
 class Temp extends Component {
   constructor(props) {
@@ -44,11 +45,9 @@ class Temp extends Component {
   render() {
     return (
       <div>
-        <h3>Temp {this.state.temp}</h3>
         <h3>Weather {this.state.weather}</h3>
-        <div>
-        <p>Clothes</p>
-        </div>
+        <Outfit weather={this.state.weather} temp={this.state.temp} />
+        <h3>Temp {this.state.temp}</h3>
       </div>
     );
   }

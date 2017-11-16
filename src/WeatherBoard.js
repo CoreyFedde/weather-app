@@ -168,6 +168,7 @@ class WeatherBoard extends Component {
       // </form>
       <div>
         <h1>Location: {this.state.city}</h1>
+        <h3>{this.state.date}</h3>
         <Temp lat={this.state.lat} lon={this.state.lon}/>
       </div>
     );
